@@ -1,0 +1,65 @@
+helloworld
+worldhello
+
+original remote url - mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu
+
+password for bitnami MEAN EC2 instance
+
+ssh username: bitnami
+
+http://13.59.44.174/
+
+
+root
+4GTVdLgHYlQL
+
+edit mongodb.conf in ~/stack/mongodb/ and then restart
+
+To restart mongo db
+
+bitnami@ip-172-31-43-87:~/stack$ sudo bash ctlscript.sh restart mongodb
+
+
+sudo mongo admin --username root --password 4GTVdLgHYlQL
+
+
+To create users 
+
+db.createUser(
+    {
+      user: "todos",
+      pwd: "sodot",
+      roles: [ "root" ]
+    }
+)
+
+remote login mongo 13.59.44.174/admin -u todos -p sodot
+
+use dummyDB
+
+db.createUser({
+        user: "todos1",
+        pwd: "1sodot",
+        roles:[
+                {
+                        "role" : "readWrite",
+                        "db": "dummyDB"
+                }
+        ]
+})
+
+mongo 13.59.44.174/dummyDB -u todos1 -p 1sodot
+
+
+
+show collections
+
+db.todos.find().pretty()
+
+
+npm add ons
+
+sudo npm install forever -g
+
+forever stopall
+forever start server.js
